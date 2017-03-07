@@ -9,7 +9,10 @@ const dbName = 'review-me';
 var database = (db) => {
     return 'mongodb://'+mongo_url+'/'+db;
 }
-
+//josefelq: Not really an issue but something pretty useful under some circumstances(dont know if your project needs it): 
+//Try using a connection pool for your database: this means reusing the mongodb connection, i.e. connect once and reuse the object.
+//It's recommended by the developers of mongodb, more info here: 
+//https://mongodb.github.io/node-mongodb-native/driver-articles/mongoclient.html
 exports.find = (col, query, callback) => {
     var mongo_url = database(dbName);
     MongoClient.connect(mongo_url, (err, db) => {
